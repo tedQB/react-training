@@ -2,10 +2,20 @@
   "name": "redux-test",
   "version": "0.1.0",
   "private": true,
+  "main": "index.js",
   "dependencies": {
+    "axios": "0.18.0",
+    "immutable": "latest",
     "react": "^16.8.6",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-redux": "6.0.1",
+    "react-router-dom": "latest",
+    "react-scripts": "2.1.8",
+    "reducers": "3.0.0-alpha",
+    "redux": "4.0.1",
+    "redux-thunk": "2.3.0",
+    "register-service-worker": "1.6.2"
   },
   "scripts": {
     "start": "react-scripts start",
