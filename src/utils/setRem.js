@@ -8,4 +8,5 @@
   rem=rem*scale;
   htmlDOM.style.fontSize=rem+'px';
   htmlDOM.setAttribute('data-dpr',dpr)
+
 })(750)

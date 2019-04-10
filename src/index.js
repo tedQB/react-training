@@ -1,24 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux'
-import './index.css';
 //import App from './App';
 //import App from "./example";
 import * as serviceWorker from './serviceWorker';
-import store from './store'
+import { AppContainer } from 'react-hot-loader';
+import store from './store/store'
 import Route from './router/index'
+import './utils/setRem';
+import './style/base.css';
+import 'lib-flexible'
 
 //ReactDOM.render(<App />, document.getElementById('root'));
 
 const render = Component => {
     ReactDOM.render(
+        //绑定redux、热加载
         <Provider store={store}>
             <AppContainer>
                 <Component />
             </AppContainer>
         </Provider>,
-        document.getElementById("root")
+        document.getElementById('root'),
     )
 }
 render(Route)

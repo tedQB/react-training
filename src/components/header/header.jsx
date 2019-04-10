@@ -5,9 +5,8 @@ import PropTypes from 'prop-types'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import './header.less';
 
-
 export default class PublicHeader extends Component{ 
-    static PropTypes={ 
+    static propTypes={ 
         record:PropTypes.any,
         title:PropTypes.string.isRequired,
         confirm:PropTypes.any
@@ -16,15 +15,25 @@ export default class PublicHeader extends Component{
     state={ 
         navState:false
     }
+    
+    toggleNav=()=>{ 
+        this.setState({ 
+            navState:!this.state.navState
+        })
+    }
 
+    FirstChild = props=>{ 
+        const childrenArray = React.Children.toArray(props.children);
+        return childrenArray[0]||null;
+    }
     shouldComponentUpdate(nextProps,nextState){ 
-
+        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
     }
 
     render(){ 
         return (
             <header className='header-container'>
-                <span className='header-slide-icon icon-catalog' onClick={this.toggleNave}></span>
+                <span className='header-slide-icon icon-catalog' onClick={this.toggleNav}></span>
                 <span className='header-title'>{this.props.title}</span>
                 { 
                     this.props.record&&
