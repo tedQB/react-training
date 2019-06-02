@@ -10,7 +10,7 @@ let defaultState = {
 export const formData = (state=defaultState,action={})=>{ 
     switch (action.type) {
         case home.SAVEFORMDATA:
-            return {...state,...{[action.type]:action.value}}
+            return {...state,...{[action.datatype]:action.value}}
         case home.SAVEIMG:
             return {...state,...{imgpath:action.path}};
         case home.CLEARDATA:
@@ -18,4 +18,6 @@ export const formData = (state=defaultState,action={})=>{
         default:
             return state;
     }
+    //reducer return给formData，
+    //formData 返回给combineReducers 存储到store里 
 }

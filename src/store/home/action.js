@@ -2,25 +2,27 @@ import * as home from './action-type';
 
 // 保存表单数据
 export const saveFormData = (value, datatype) => {
-    return {
-        type: home.SAVEFORMDATA,
-        value,
-        datatype,
-    }
+  return {
+    type: home.SAVEFORMDATA,
+    value,
+    datatype,
+  }
+  // return 返回的便是action 
+  // 传入到reducer里
 }
 
 // 保存图片地址
 export const saveImg = path => {
-    return {
-        type: home.SAVEIMG,
-        path,
-    }
+  return {
+    type: home.SAVEIMG,
+    path,
+  }
 }
 
 // 保存图片地址
 export const clearData = () => {
-    return {
-        type: home.CLEARDATA,
-    }
+  return {
+    type: home.CLEARDATA,
+  }
 }
 

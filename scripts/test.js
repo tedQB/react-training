@@ -1,3 +1,11 @@
+// @remove-on-eject-begin
+/**
+ * Copyright (c) 2015-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+// @remove-on-eject-end
 'use strict';
 
 // Do this as the first thing so that any code reading it knows the right env.
@@ -15,46 +23,28 @@ process.on('unhandledRejection', err => {
 // Ensure environment variables are read.
 require('../config/env');
 
-
 const jest = require('jest');
-const execSync = require('child_process').execSync;
-let argv = process.argv.slice(2);
+const argv = process.argv.slice(2);
 
-function isInGitRepository() {
-  try {
-    execSync('git rev-parse --is-inside-work-tree', { stdio: 'ignore' });
-    return true;
-  } catch (e) {
-    return false;
-  }
+// Watch unless on CI or in coverage mode
+if (!process.env.CI && argv.indexOf('--coverage') < 0) {
+  argv.push('--watch');
 }
 
-function isInMercurialRepository() {
-  try {
-    execSync('hg --cwd . root', { stdio: 'ignore' });
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-// Watch unless on CI, in coverage mode, explicitly adding `--no-watch`,
-// or explicitly running all tests
-if (
-  !process.env.CI &&
-  argv.indexOf('--coverage') === -1 &&
-  argv.indexOf('--no-watch') === -1 &&
-  argv.indexOf('--watchAll') === -1
-) {
-  // https://github.com/facebook/create-react-app/issues/5210
-  const hasSourceControl = isInGitRepository() || isInMercurialRepository();
-  argv.push(hasSourceControl ? '--watch' : '--watchAll');
-}
-
-// Jest doesn't have this option so we'll remove it
-if (argv.indexOf('--no-watch') !== -1) {
-  argv = argv.filter(arg => arg !== '--no-watch');
-}
-
-
+// @remove-on-eject-begin
+// This is not necessary after eject because we embed config into package.json.
+const createJestConfig = require('./utils/createJestConfig');
+const path = require('path');
+const paths = require('../config/paths');
+argv.push(
+  '--config',
+  JSON.stringify(
+    createJestConfig(
+      relativePath => path.resolve(__dirname, '..', relativePath),
+      path.resolve(paths.appSrc, '..'),
+      false
+    )
+  )
+);
+// @remove-on-eject-end
 jest.run(argv);
