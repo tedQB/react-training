@@ -30,7 +30,7 @@
 
 
 ## 效果图
-<img src='https://github.com/tedQB/Redux-test/blob/master/img/01.jpg?raw=true' width=300/><img src='https://github.com/tedQB/Redux-test/blob/master/img/02.jpg?raw=true' width=300/><img src='https://github.com/tedQB/Redux-test/blob/master/img/03.jpg?raw=true' width=300/>
+<img src='https://github.com/tedQB/Redux-test/blob/master/img/01.jpg?raw=true' width=200/><img src='https://github.com/tedQB/Redux-test/blob/master/img/02.jpg?raw=true' width=200/><img src='https://github.com/tedQB/Redux-test/blob/master/img/03.jpg?raw=true' width=200/>
 
 
 # 个人感悟
