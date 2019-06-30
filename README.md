@@ -5,8 +5,6 @@
 
 项目package.json内使用的模块，组件全部为官方目前最新版本，向后兼容。
 
-特别感谢 bailicangdu 提供的react 教程以及参考项目
-
 
 
 
